@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>订单{{ order_dict.订单号 }}</title>
+    <style>
+         body{
+            width: 100%;
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+             size: A5;
+        }
+         .header {
+                        /* Background color */
+                        background-color: #ddd;
+
+                        /* Stick to the top */
+                        position: sticky;
+                        top: 0;
+
+                        /* Displayed on top of other rows when scrolling */
+                        z-index: 9999;
+                    }
+         button{
+
+             width: 300px;
+             height: 100px;
+         }
+    </style>
+</head>
+<body>
+    <div>
+        <!--startpart-->
+    {% comment %}<p>订单号：{{ order_dict.订单号 }}</p>
+    <p>收件人姓名：{{ order_dict.收件人姓名 }}</p>
+    <p>收件人地址：{{ order_dict.收件人地址 }}</p>
+    <p>收件人手机：{{ order_dict.收件人手机 }}</p>
+    <p>期望送达时间：{{ order_dict.期望送达时间 }}</p>
+    <p>买家备注：{{ order_dict.买家备注 }}</p>
+    <p>订单实际支付金额：{{ order_dict.订单实际支付金额 }}</p>
+    <p>共{{ length }}个商品</p>{% endcomment %}
+
+    <table>
+    <thead>
+        <tr><td>订单号：{{ order_dict.订单号 }}</td></tr>
+        <tr><td>收件人姓名：{{ order_dict.收件人姓名 }}</td></tr>
+        <tr><td>收件人地址：{{ order_dict.收件人地址 }}</td></tr>
+        <tr><td>收件人手机：{{ order_dict.收件人手机 }}</td><td>期望送达时间：{{ order_dict.期望送达时间 }}</td></tr>
+        <tr><td>买家备注：{{ order_dict.买家备注 }}</td></tr>
+        <tr><td>订单实际支付金额：{{ order_dict.订单实际支付金额 }}</td><td>共{{ length }}个商品</td></tr>
+        <tr></tr>
+        <tr>
+            <th class="header">
+                商品名称
+            </th>
+            <th class="header">
+                商品属性
+            </th>
+            <th class="header">
+                商品数量
+            </th>
+
+            <!-- Repeat other header column ... -->
+        </tr>
+        {% for i in goods %}
+        <tr>
+        <td>{{ i.0 }}</td><td>{{ i.1 }}</td><td>{{ i.2 }}</td>
+        </tr>
+        {% endfor %}
+    </thead>
+    <tbody>
+
+    </tbody>
+    </table>
+	<!--endpart-->
+    <button onclick="printDOM()">打印订单</button>
+
+
+
+
+    </div>
+
+
+
+</body>
+
+<script>
+function printDOM(){
+
+// 获取body的全部内容并保存到一个变量中
+var bodyHtml = window.document.body.innerHTML;
+
+// 通过截取字符串的方法获取所需要打印的内容
+var printStart = '<!--startpart-->';
+var printEnd = '<!--endpart-->';
+
+var printHtmlStart = bodyHtml.slice(bodyHtml.indexOf(printStart));
+var printHtml = printHtmlStart.slice(0,printHtmlStart.indexOf(printEnd));
+
+// 将截取后打印内容 替换掉 body里的内容
+window.document.body.innerHTML = printHtml;
+
+// 打印操作
+window.print();
+
+// 打印完成之后再恢复body的原始内容
+window.document.body.innerHTML = bodyHtml;
+
+self.close();
+
+}
+</script>
+
+</html>

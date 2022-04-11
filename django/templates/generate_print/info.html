@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>错误提示</title>
+    <script>
+    alert({{info}});
+    </script>
+    <style>
+        body{
+            width: 100%;
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+             size: A5;
+        }
+         .header {
+                        /* Background color */
+                        background-color: #ddd;
+
+                        /* Stick to the top */
+                        position: sticky;
+                        top: 0;
+
+                        /* Displayed on top of other rows when scrolling */
+                        z-index: 9999;
+                    }
+         button{
+
+             width: 300px;
+             height: 100px;
+         }
+    </style>
+</head>
+<body onload="alert('{{ info }}');window.history.back(-1);">
+
+</body>
+
+</html>

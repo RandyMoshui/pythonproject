@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+{% load static %}
+    <meta charset="UTF-8">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <title>{% block mytitle %}{% endblock %}</title>
+    <style>
+.button {
+    background-color: #5DADE2; /* Green */
+    border: none;
+    color: white;
+    padding: 8px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    border-radius: 8px;
+}
+
+
+
+.button:hover {
+    background-color: #555555;
+    color: white;
+}
+</style>
+</head>
+{#下面需要设置静态资源地址#}
+<link rel="stylesheet" type="text/css" href="/css/reset.css">
+<link rel="stylesheet" href="/css/demo.css" />
+<link rel="stylesheet" href="/dist/styles/Vidage.css" />
+<body>
+    <h2 class="page-header">{% block myh2 %}{% endblock %}</h2>
+    <div class="Vidage">
+		<div class="Vidage__image"></div>
+		<video id="VidageVideo" class="Vidage__video" preload="metadata" loop autoplay muted>
+			<source src="http://jywlh.cn/videos/bg.webm" type="video/webm">
+			<source src="http://jywlh.cn/videos/bg.mp4" type="video/mp4">
+		</video>
+		<div class="Vidage__backdrop"></div>
+	</div>
+    {% block mycontent %}
+        {% endblock %}
+    {#下面需要设置静态资源地址#}
+    <script src="/dist/scripts/Vidage.min.js"></script>
+	<script>
+		new Vidage('#VidageVideo');
+	</script>
+</body>
+</html>

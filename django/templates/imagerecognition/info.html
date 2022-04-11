@@ -1,0 +1,12 @@
+{% extends 'imagerecognition/base.html' %}
+{% block mytitle %}操作信息提示{% endblock %}
+{% block myh2 %}
+    <a href="{% url 'index' %}">继续识别照片</a>
+{% endblock %}
+{% block mycontent %}
+    <script>alert('{{ info }}');</script>
+
+
+
+
+{% endblock %}
