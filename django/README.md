@@ -15,6 +15,6 @@
 运行:
 
 ```powershell
-python manage.py [面向网段的IP]:[端口]
+python manage.py runserver [面向网段的IP]:[端口]
 ```
 
